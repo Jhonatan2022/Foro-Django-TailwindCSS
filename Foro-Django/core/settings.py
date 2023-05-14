@@ -61,6 +61,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Incluimos corsheaders que nos sirve para incluir aplicaciones de terceros
+    'corsheaders',
+
+    # Incluimos rest_framework que nos sirve para crear una api rest
+    'rest_framework',
+
     # Incluimos tailwind para poder usarlo
     'tailwind',
 
@@ -68,7 +74,7 @@ INSTALLED_APPS = [
     'theme',
 
     # Incluimos django_browser_reload nos permite recargar el navegador cuando se hacen cambios
-    'django_browser_reload'
+    'django_browser_reload',
 
     # Registramos nuestras apps
     'users',
@@ -90,6 +96,18 @@ INTERNAL_IPS = [
 
 
 
+# Incluimos las direcciones que podran acceder a nuestro aplicativo
+CORS_ALLOWED_ORIGINS = [
+
+    # Incluimos la ip de react para el desarrollo
+    'http://localhost:3000',
+
+    # Incluimos la ip de react para el desarrollo
+    'http://127.0.0.1:3000',
+]
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -102,6 +120,9 @@ MIDDLEWARE = [
 
     # Incluimos el middleware de django_browser_reload para poder recargar el navegador cuando se hacen cambios
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+
+    # Incluimos corsheaders para poder usarlo
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
