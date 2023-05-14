@@ -102,3 +102,38 @@ class User(AbstractBaseUser, PermissionsMixin):
     # max_length nos permite definir la longitud máxima del campo
     first_name = models.CharField(max_length=150)
 
+
+    # Definimos el campo start_date que sera la fecha de creación del usuario
+    # auto_now_add nos permite definir que el campo se rellena automáticamente cuando se crea un usuario
+    start_date = models.DateTimeField(default=timezone.now)
+
+
+    # Definimos el campo de bio que puede estar vacío
+    # max_length nos permite definir la longitud máxima del campo
+    bio = models.TextField(_('bio'), max_length=500, blank=True)
+
+
+    # Definimos el campo de avatar que puede estar vacío
+    # upload_to nos permite definir la ruta donde se guardará el archivo
+    # max_length nos permite definir la longitud máxima del campo
+    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
+
+
+    # Definimos el campo de is_staff que nos permite acceder al panel de administración
+    # default nos permite definir el valor por defecto del campo
+    is_staff = models.BooleanField(default=False)
+
+
+    # Definimos el campo de is_active que nos permite acceder al panel de administración
+    # default nos permite definir el valor por defecto del campo
+    is_active = models.BooleanField(default=False)
+
+
+    # Definimos el campo de objects que nos permite usar el modelo personalizado
+    objects = CustomAccountManager()
+
+    # Definimos el campo de USERNAME_FIELD que nos permite definir el campo que se usará para iniciar sesión
+    USERNAME_FIELD = 'email'
+
+    # Definimos el campo de REQUIRED_FIELDS que nos permite definir los campos que son obligatorios
+    REQUIRED_FIELDS = ['user_name', 'first_name']
