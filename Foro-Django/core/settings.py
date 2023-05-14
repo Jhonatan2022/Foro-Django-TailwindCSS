@@ -10,6 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+# Importamos timedelta para poder definir el tiempo de expiracion del token
+from datetime import timedelta
+
+# Importamos Path para poder definir las rutas de los archivos
 from pathlib import Path
 
 # Importamos os para poder usar las variables de entorno
@@ -18,6 +22,8 @@ import os
 # Importamos environ para poder usar las variables de entorno
 from environ import Env
 #--------------------------------IMPORT LIBRARIES--------------------------------
+
+
 
 
 #--------------------------------ENVIRONMENT VARIABLES--------------------------------
@@ -29,6 +35,10 @@ env.read_env()
 
 # Definimos las variables de entorno
 ENVIROMENT = env
+#--------------------------------ENVIRONMENT VARIABLES--------------------------------
+
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -105,6 +115,111 @@ CORS_ALLOWED_ORIGINS = [
     # Incluimos la ip de react para el desarrollo
     'http://127.0.0.1:3000',
 ]
+#--------------------------------TAILWIND CONFIGURATION--------------------------------
+
+
+
+
+#--------------------------------REST FRAMEWORK CONFIGURATION--------------------------------
+# Definimos el tipo de autenticacion que usaremos en nuestra api rest
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+
+        # Incluimos la autenticacion por token de jwt
+        # JWT es un tipo de token que nos permite autenticar a los usuarios en todas las peticiones
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
+}
+
+
+# Definimos el tiempo de expiracion del token
+SIMPLE_JWT = {
+
+    # Definimos el tiempo de expiracion del token
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=30),
+
+    # Refrescar el token de refresco es para que el token de refresco se cambie cada vez que se use
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+
+    # Rotar los tokens de refresco es para que el token de refresco se cambie cada vez que se use
+    'ROTATE_REFRESH_TOKENS': False,
+
+    # Blacklist after rotation es para que el token anterior no se pueda usar
+    'BLACKLIST_AFTER_ROTATION': False,
+
+    # Update last login es para actualizar la fecha de ultimo login
+    'UPDATE_LAST_LOGIN': False,
+
+
+
+    # Definimos el algoritmo que usaremos para crear el token
+    # El algoritmo HS256 es un algoritmo de encriptacion que usa una clave secreta
+    'ALGORITHM': 'HS256',
+
+    # Definimos la clave secreta que usaremos para crear el token (Solo el servidor debe conocerla)
+    'SIGNING_KEY': SECRET_KEY,
+
+    # Definimos la clave publica que usaremos para verificar el token 
+    'VERIFYING_KEY': None,
+
+    # Audience es para definir el publico al que va dirigido el token (Quien lo puede usar)
+    'AUDIENCE': None,
+
+    # Issuer es para definir el emisor del token (Quien lo creo)
+    'ISSUER': None,
+
+    # JWK_URL es para definir la url donde se encuentra la clave publica (Solo se usa con el algoritmo RS256)
+    'JWK_URL': None,
+
+    # Leeway es para definir el tiempo de expiracion del token (En segundos)
+    'LEEWAY': 0,
+
+
+
+    # AUTH HEADER TYPES es para definir el tipo de autenticacion que usaremos en el header (Bearer es el mas usado)
+    'AUTH_HEADER_TYPES': ('Bearer',),
+
+    # AUTH HEADER NAME es para definir el nombre del header que usaremos para la autenticacion (Authorization es el mas usado)
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+
+    # USER ID FIELD es para definir el campo que usaremos para identificar al usuario (id es el mas usado)
+    'USER_ID_FIELD': 'id',
+
+    # USER ID CLAIM es para definir el claim que usaremos para identificar al usuario (user_id es el mas usado)
+    'USER_ID_CLAIM': 'user_id',
+
+    # USER AUTHENTICATION RULE es para definir la regla de autenticacion que usaremos (default_user_authentication_rule es el mas usado)
+    'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
+
+
+
+    # AUTH TOKEN CLASSES es para definir el tipo de token que usaremos (AccessToken es el mas usado)
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+
+    # TOKEN TYPE CLAIM es para definir el claim que usaremos para identificar el tipo de token (token_type es el mas usado)
+    'TOKEN_TYPE_CLAIM': 'token_type',
+
+    # TOKEN USER CLASS es para definir la clase que usaremos para identificar al usuario (TokenUser es el mas usado)
+    'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
+
+
+
+    # JTI CLAIM es para definir el claim que usaremos para identificar el token (jti es el mas usado)
+    'JTI_CLAIM': 'jti',
+
+
+
+    # SLIDING TOKEN REFRESH EXP CLAIM es para definir el claim que usaremos para identificar la fecha de expiracion del token de refresco (refresh_exp es el mas usado)
+    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+
+    # SLIDING TOKEN LIFETIME es para definir el tiempo de expiracion del token de refresco (En segundos)
+    'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
+
+    # SLIDING TOKEN REFRESH LIFETIME es para definir el tiempo de expiracion del token de refresco (En segundos)
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+}
+#--------------------------------REST FRAMEWORK CONFIGURATION--------------------------------
+
 
 
 
@@ -189,12 +304,27 @@ USE_I18N = True
 USE_TZ = True
 
 
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
 
+# Definimos la ruta de los archivos estaticos
+MEDIA_URL = '/media/'
+
+# Definimos la ruta de los archivos estaticos
+# Usamos os.path.join para unir la ruta de la carpeta media con la ruta de la carpeta base
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Definimos el modelo de usuario que vamos a usar
+AUTH_USER_MODEL = 'users.User'
