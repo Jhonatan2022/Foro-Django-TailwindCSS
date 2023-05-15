@@ -116,7 +116,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     # Definimos el campo de avatar que puede estar vacío
     # upload_to nos permite definir la ruta donde se guardará el archivo
     # max_length nos permite definir la longitud máxima del campo
-    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
+    avatar = models.ImageField(null=True, blank=True, default='/avatar_default.png')
 
 
     # Definimos el campo de is_staff que nos permite acceder al panel de administración

@@ -23,6 +23,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
 
+    # Incluimos las rutas de la app "Users"
+    path('users/', include("users.urls")),
+
+
     # Incluimos la ruta de __reload__ para poder recargar el servidor de desarrollo cuando se haga un cambio
     path("__reload__/", include("django_browser_reload.urls")),
 ]
