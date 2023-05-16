@@ -5,7 +5,7 @@ from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
 
 # Importamos User para poder usar el modelo de usuario de Django
-from django.contrib.auth.models import User
+from .models import User
 #--------------------------------------IMPORT LIBRARIES--------------------------------------#
 
 
@@ -28,27 +28,27 @@ class UserSerializer(serializers.ModelSerializer):
 
         # Definimos los campos que queremos que tenga el serializador
         fields = [
-
+            
             # Indicamos el campo "id" del modelo
-            "id",
+            'id',
+             
+            # Indicamos el campo "user_name" del modelo
+            'user_name',
 
-            # Indicamos el campo "username" del modelo
-            "user_name",
+            # Indicamos el campo "first_name" del modelo 
+            'email',
+             
+            # Indicamos el campo "is_admin" del modelo
+            'is_admin', 
 
-            # Indicamos el campo "email" del modelo
-            "email",
+            # Indicamos el campo "bio" del modelo
+            'bio', 
 
-            # Indicamos el campo "is_admin" del serializador
-            "is_admin",
+            # Indicamos el campo "image" del modelo
+            'first_name', 
 
-            # Indicamos el campo de bio
-            "bio",
-
-            # Indicamos el campo de avatar
-            "avatar",
-
-            # Indicamos el campo de first_name
-            "first_name",
+            # Indicamos el campo "image" del modelo
+            'image'
         ]
 
 
@@ -63,7 +63,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 # Definimos el serializador de registro de usuario (certificación de usuario)
-class UserSerializerWithToken (UserSerializer):
+class UserSerializerWithToken(UserSerializer):
 
     # Incluimos el token de usuario
     # read_only=True: Indica que el campo no se puede modificar
@@ -73,33 +73,35 @@ class UserSerializerWithToken (UserSerializer):
     # Definimos los campos del serializador
     class Meta:
 
+        # Definimos el modelo, que es el modelo de usuario de Django
         model = User
 
+        # Definimos los campos que queremos que tenga el serializador
         fields = [
 
             # Indicamos el campo "id" del modelo
-            "id",
+            'id', 
 
-            # Indicamos el campo "username" del modelo
-            "user_name",
+            # Indicamos el campo "user_name" del modelo
+            'user_name', 
+
+            # Indicamos el campo "first_name" del modelo
+            'first_name',
 
             # Indicamos el campo "email" del modelo
-            "email",
-
-            # Indicamos el campo "is_admin" del serializador
-            "is_admin",
-
-            # Indicamos el campo de bio
-            "bio",
-
-            # Indicamos el campo de avatar
-            "avatar",
-
-            # Indicamos el campo de first_name
-            "first_name",
-
-            # Indicamos el campo de token
-            "token",
+            'email', 
+            
+            # Indicamos el campo "is_admin" del modelo
+            'is_admin', 
+            
+            # Indicamos el campo "bio" del modelo
+            'token', 
+            
+            # Indicamos el campo "image" del modelo
+            'bio', 
+            
+            # Indicamos el campo "image" del modelo
+            'image'
         ]
 
 

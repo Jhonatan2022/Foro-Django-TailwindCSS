@@ -2,14 +2,14 @@
 from django.urls import path
 
 # Importamos las vistas de usuarios
-from users import views
+from . import views
 #--------------------------------------IMPORT LIBRARIES--------------------------------------#
 
 
 
 
-#--------------------------------------RUTAS--------------------------------------
-# Definimos las rutas
+#--------------------------------------URLS--------------------------------------#
+# Definimos las rutas de la app de usuarios
 urlpatterns = [
 
     # Creamos la ruta del login de usuario
@@ -18,5 +18,5 @@ urlpatterns = [
 
     # Creamos la ruta del registro de usuario
     path('register/', views.register),
-
+    
 ]
