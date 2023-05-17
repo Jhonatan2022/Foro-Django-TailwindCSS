@@ -9,10 +9,36 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
-from pathlib import Path
-import os
+# Importamos timedelta para poder definir el tiempo de expiracion del token
 from datetime import timedelta
+
+# Importamos Path para poder definir las rutas de los archivos
+from pathlib import Path
+
+# Importamos os para poder usar las variables de entorno
+import os
+
+# Importamos environ para poder usar las variables de entorno
+from environ import Env
+#--------------------------------IMPORT LIBRARIES--------------------------------
+
+
+
+
+
+#--------------------------------ENVIRONMENT VARIABLES--------------------------------
+# Env es una clase que nos permite acceder a las variables de entorno
+env = Env()
+
+# Lee el archivo .env y lo carga en las variables de entorno
+env.read_env()
+
+# Definimos las variables de entorno
+ENVIROMENT = env
+#--------------------------------ENVIRONMENT VARIABLES--------------------------------
+
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,10 +48,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7hrts==e^r+b5f5k2v)473e6+@vw352^)6xl@t=c3!ek714uk='
+# Obtenemos la variable de entorno SECRET_KEY
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Importamos de env la variable de entorno DEBUG
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = []
 
