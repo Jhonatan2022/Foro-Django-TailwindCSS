@@ -24,10 +24,10 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 # Importamos nuestro modelo de usuario
-from users.models import User
+from .models import User
 
 # Importamos nuestro serializador de usuario y de usuario con token
-from users.serializers import UserSerializer, UserSerializerWithToken
+from .serializers import  UserSerializer, UserSerializerWithToken
 #--------------------------------------IMPORT LIBRARIES--------------------------------------#
 
 
@@ -44,7 +44,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         data = super().validate(attrs)
 
         # Creamos una variable que almacena el valor del usuario
-        serializer = UserSerializerWithToken(self.user).data
+        serializers = UserSerializerWithToken(self.user).data
 
 
         # Creamos un bucle que recorre el token y el usuario
@@ -55,7 +55,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         # Devolvemos la variable data
         return data
-    
+
 
 
 

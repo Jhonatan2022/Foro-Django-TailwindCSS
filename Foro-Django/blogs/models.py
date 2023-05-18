@@ -49,3 +49,4 @@ class Comment(models.Model):
 
     # Definimos el campo de date que sera la fecha de creación del comentario
     date = models.DateTimeField(auto_now_add=True)
+#--------------------------------------MODELS--------------------------------------
