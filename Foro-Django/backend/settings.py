@@ -58,8 +58,8 @@ DEBUG = os.environ.get('DEBUG')
 ALLOWED_HOSTS = []
 
 
-# Application definition
 
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -67,59 +67,134 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Usamos corsheaders para poder acceder a nuestro aplicativo desde react
     'corsheaders',
+
+    # Usamos rest_framework para poder usar la autenticacion con JWT
     'rest_framework',
+
+    # Incluimos las aplicaciones que creamos
     'blogs',
     'users',
 ]
 
+
+
+# Incluimos las direcciones que podran acceder a nuestro aplicativo
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
+
+    # Incluimos la ip de react para el desarrollo
+    'http://localhost:3000',
+
+    # Incluimos la ip de react para el desarrollo
+    'http://127.0.0.1:3000',
 ]
+#--------------------------------TAILWIND CONFIGURATION--------------------------------
 
 
+
+
+#--------------------------------REST FRAMEWORK CONFIGURATION--------------------------------
+# Definimos el tipo de autenticacion que usaremos en nuestra api rest
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+
+        # Incluimos la autenticacion por token de jwt
+        # JWT es un tipo de token que nos permite autenticar a los usuarios en todas las peticiones
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
 
+
+# Definimos el tiempo de expiracion del token
 SIMPLE_JWT = {
+
+    # Definimos el tiempo de expiracion del token
     'ACCESS_TOKEN_LIFETIME': timedelta(days=30),
+
+    # Refrescar el token de refresco es para que el token de refresco se cambie cada vez que se use
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+
+    # Rotar los tokens de refresco es para que el token de refresco se cambie cada vez que se use
     'ROTATE_REFRESH_TOKENS': False,
+
+    # Blacklist after rotation es para que el token anterior no se pueda usar
     'BLACKLIST_AFTER_ROTATION': False,
+
+    # Update last login es para actualizar la fecha de ultimo login
     'UPDATE_LAST_LOGIN': False,
 
+
+
+    # Definimos el algoritmo que usaremos para crear el token
+    # El algoritmo HS256 es un algoritmo de encriptacion que usa una clave secreta
     'ALGORITHM': 'HS256',
+
+    # Definimos la clave secreta que usaremos para crear el token (Solo el servidor debe conocerla)
     'SIGNING_KEY': SECRET_KEY,
+
+    # Definimos la clave publica que usaremos para verificar el token
     'VERIFYING_KEY': None,
+
+    # Audience es para definir el publico al que va dirigido el token (Quien lo puede usar)
     'AUDIENCE': None,
+
+    # Issuer es para definir el emisor del token (Quien lo creo)
     'ISSUER': None,
+
+    # JWK_URL es para definir la url donde se encuentra la clave publica (Solo se usa con el algoritmo RS256)
     'JWK_URL': None,
+
+    # Leeway es para definir el tiempo de expiracion del token (En segundos)
     'LEEWAY': 0,
 
+
+
+    # AUTH HEADER TYPES es para definir el tipo de autenticacion que usaremos en el header (Bearer es el mas usado)
     'AUTH_HEADER_TYPES': ('Bearer',),
+
+    # AUTH HEADER NAME es para definir el nombre del header que usaremos para la autenticacion (Authorization es el mas usado)
     'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+
+    # USER ID FIELD es para definir el campo que usaremos para identificar al usuario (id es el mas usado)
     'USER_ID_FIELD': 'id',
+
+    # USER ID CLAIM es para definir el claim que usaremos para identificar al usuario (user_id es el mas usado)
     'USER_ID_CLAIM': 'user_id',
+
+    # USER AUTHENTICATION RULE es para definir la regla de autenticacion que usaremos (default_user_authentication_rule es el mas usado)
     'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
 
-    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
-    'TOKEN_TYPE_CLAIM': 'token_type',
-    'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
 
+
+    # AUTH TOKEN CLASSES es para definir el tipo de token que usaremos (AccessToken es el mas usado)
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+
+    # TOKEN TYPE CLAIM es para definir el claim que usaremos para identificar el tipo de token (token_type es el mas usado)
+    'TOKEN_TYPE_CLAIM': 'token_type',
+
+    # TOKEN USER CLASS es para definir la clase que usaremos para identificar al usuario (TokenUser es el mas usado)
+    'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',    
+
+
+
+    # JTI CLAIM es para definir el claim que usaremos para identificar el token (jti es el mas usado)
     'JTI_CLAIM': 'jti',
 
+
+
+    # SLIDING TOKEN REFRESH EXP CLAIM es para definir el claim que usaremos para identificar la fecha de expiracion del token de refresco (refresh_exp es el mas usado)
     'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+
+    # SLIDING TOKEN LIFETIME es para definir el tiempo de expiracion del token de refresco (En segundos)
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
+
+    # SLIDING TOKEN REFRESH LIFETIME es para definir el tiempo de expiracion del token de refresco (En segundos)
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
-
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -127,6 +202,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    # Incluimos corsheaders para poder usarlo
+    "corsheaders.middleware.CorsMiddleware",
+
+    # Incluimos el middleware de django_browser_reload para poder recargar el navegador cuando se hacen cambios en el codigo
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -197,9 +277,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
+# Definimos la ruta de los archivos estaticos (CSS, JavaScript, Images)
+MEDIA_URL = '/media/'
+
+# Definimos la ruta de los archivos estaticos
+# Usamos os.path.join para unir la ruta de la carpeta media con la ruta de la carpeta base
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-MEDIA_URL = '/media/'
+
 
 
 
@@ -208,5 +294,8 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+
+# Definimos el modelo de usuario que usaremos
 AUTH_USER_MODEL = 'users.User'
 
