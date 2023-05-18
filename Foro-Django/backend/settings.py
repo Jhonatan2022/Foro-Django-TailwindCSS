@@ -67,8 +67,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Inclumos corsheaders para poder usar CORS
+    # Cors nos  sirve para poder hacer peticiones desde el frontend
     'corsheaders',
+
+    # Incluimos rest_framework para poder usar la API
     'rest_framework',
+
+    # Incluimos nuestras aplicaciones
     'blogs',
     'users',
 ]
@@ -116,6 +123,9 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+
+
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
