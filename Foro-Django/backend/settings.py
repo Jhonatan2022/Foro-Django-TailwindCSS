@@ -68,6 +68,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+<<<<<<< HEAD
+    # Inclumos corsheaders para poder usar CORS
+    # Cors nos  sirve para poder hacer peticiones desde el frontend
+    'corsheaders',
+
+    # Incluimos rest_framework para poder usar la API
+    'rest_framework',
+
+    # Incluimos nuestras aplicaciones
+=======
     # Usamos corsheaders para poder acceder a nuestro aplicativo desde react
     'corsheaders',
 
@@ -75,6 +85,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # Incluimos las aplicaciones que creamos
+>>>>>>> 582d133d09b6a715de0288dfc341a7e01d2b47db
     'blogs',
     'users',
 ]
@@ -193,6 +204,9 @@ SIMPLE_JWT = {
     # SLIDING TOKEN REFRESH LIFETIME es para definir el tiempo de expiracion del token de refresco (En segundos)
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
