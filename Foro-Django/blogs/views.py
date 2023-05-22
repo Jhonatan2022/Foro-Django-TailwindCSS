@@ -28,34 +28,81 @@ from users.models import User
 
 
 #--------------------------------------VIEWS--------------------------------------
+# Creamos la vista para obtener todos los blogs
+# Pasamos is_authenticated para que solo los usuarios autenticados puedan ver los blogs
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
+
+# Creamos la función getBlogs
 def getBlogs(request):
+
+    # Filtramos los blogs y los ordenamos por fecha de creación
+    # -date para ordenarlos de más reciente a más antiguo
     blog = Blog.objects.filter().order_by('-date')
+
+    # Creamos el serializer de Blog y le pasamos los blogs
+    # many=True para que pueda serializar varios blogs
     serializer = BlogSerializer(blog, many=True)
+
+    # Retornamos el serializer con los blogs
     return Response(serializer.data)
 
 
+
+
+# Creamos la vista para obtener los blogs de un usuario
+# Pasamos is_authenticated para que solo los usuarios autenticados puedan ver los blogs
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
+
+# Creamos la función getBlogsUser y le pasamos el request y el pk del usuario
 def getSoloBlog(request, pk):
+
+    # Obtenemos los blogs del usuario por medio del pk
     blog = Blog.objects.get(id=pk)
+
+    # Creamos el serializer de Blog y le pasamos el blog
+    # many=False para que pueda serializar un solo blog
     serializer = BlogSerializer(blog, many=False)
+
+    # Retornamos el serializer con el blog del usuario
     return Response(serializer.data)
 
 
+
+
+# Creamos la vista para poder crear un blog nuevo
+# Pasamos is_authenticated para que solo los usuarios autenticados puedan ver los blogs
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
+
+# Creamos la función postBlog y le pasamos el request del usuario
 def postBlog(request):
+
+    # Obtenemos los datos del request del usuario
     data = request.data
+
+    # Creamos el blog y le pasamos los datos del request del usuario
     blog = Blog.objects.create(
+
+        # Obtenemos el usuario que está creando el blog
         user = request.user,
+
+        # Obtenemos el título del blog
         body = data['body'],
     )
+
+    # Creamos el serializer de Blog y le pasamos el blog
+    # many=False para que pueda serializar un solo blog
     serializer = BlogSerializer(blog, many=False)
+
+    # Retornamos el serializer con el blog creado
     return Response(serializer.data)
 
 
+
+
+# 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def putBlog(request, pk):
@@ -95,36 +142,4 @@ def comment(request, pk):
     comments = blog.comment_set.all()
     blog.save()
     return Response('Comment added!!')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#--------------------------------------VIEWS--------------------------------------
