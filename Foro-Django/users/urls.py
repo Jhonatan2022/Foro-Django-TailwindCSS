@@ -41,3 +41,4 @@ urlpatterns = [
     # Creamos la ruta para obtener todos los usuarios
     path ('getUsers/', views.getUsers),
 ]
+#------------------------------URLS-----------------------------#

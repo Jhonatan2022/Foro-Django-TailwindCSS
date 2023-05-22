@@ -1,14 +1,33 @@
+# Importamos serializers para poder usar los serializers de Django Rest Framework
 from rest_framework import serializers
+
+# Importamos api_view para poder usar las vistas de Django Rest Framework
+# Importamos permission_classes para poder usar los permisos de Django Rest Framework
 from rest_framework.decorators import api_view, permission_classes
+
+# Importamos IsAuthenticated para poder usar el permiso de autenticación de Django Rest Framework
 from rest_framework.permissions import IsAuthenticated
+
+# Importamos Response para poder usar las respuestas de Django Rest Framework
 from rest_framework.response import Response
+
+# Importamos status para poder usar los códigos de estado de Django Rest Framework
 from rest_framework import status
 
+# Importamos BlogSerializer para poder usar el serializer de Blog
 from .serializers import BlogSerializer
+
+# Importamos los modelos de Blog y Comment para poder usarlos
 from .models import Blog, Comment
+
+# Importamos User para poder usar el modelo de usuario
 from users.models import User
+#----------------------------IMPORT LIBRARIES-------------------------#
 
 
+
+
+#--------------------------------------VIEWS--------------------------------------
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getBlogs(request):

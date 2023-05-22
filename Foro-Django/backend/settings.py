@@ -68,7 +68,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-<<<<<<< HEAD
     # Inclumos corsheaders para poder usar CORS
     # Cors nos  sirve para poder hacer peticiones desde el frontend
     'corsheaders',
@@ -77,15 +76,6 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # Incluimos nuestras aplicaciones
-=======
-    # Usamos corsheaders para poder acceder a nuestro aplicativo desde react
-    'corsheaders',
-
-    # Usamos rest_framework para poder usar la autenticacion con JWT
-    'rest_framework',
-
-    # Incluimos las aplicaciones que creamos
->>>>>>> 582d133d09b6a715de0288dfc341a7e01d2b47db
     'blogs',
     'users',
 ]
