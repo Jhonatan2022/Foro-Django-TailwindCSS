@@ -20,9 +20,12 @@ urlpatterns = [
     # Incluimos la ruta para obtener un solo blog por medio del pk
     path('get/<int:pk>/', views.getSoloBlog),
 
-
-    
+ 
+    # Creamos la ruta para poder crear un blog nuevo
     path('post/', views.postBlog),
+
+
+    # Creamos la ruta para poder editar un blog por medio del pk
     path('put/<int:pk>/', views.putBlog),
     path('delete/<int:pk>/', views.deleteBlog),
     path('comment/<int:pk>/', views.comment),
