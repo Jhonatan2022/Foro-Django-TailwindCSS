@@ -27,7 +27,13 @@ urlpatterns = [
 
     # Creamos la ruta para poder editar un blog por medio del pk
     path('put/<int:pk>/', views.putBlog),
+
+
+    # Creamos la ruta para poder eliminar un blog por medio del pk
     path('delete/<int:pk>/', views.deleteBlog),
+
+
+    # Creamos la ruta para poder comentar un blog por medio del pk
     path('comment/<int:pk>/', views.comment),
 ]
 #--------------------------------------URLS--------------------------------------
