@@ -7,7 +7,6 @@ import Header from './components/Header';
 
 
 
-
 function App() {
   return (
     <>
@@ -17,4 +16,6 @@ function App() {
   );
 }
 
+
+// Exportamos por defecto el componente
 export default App;
