@@ -34,3 +34,13 @@ const initialState = {
 
 // Creamos la constante de midelware para poder hacer peticiones asíncronas
 const middleware = [thunk];
+
+
+
+
+// Creamos la constante de store
+const store = createStore( reducer, initialState, composeWithDevTools( applyMiddleware(...middleware) ) );
+
+
+// Exportamos el store
+export default store;
