@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "redux-devtools-extension": "^2.13.9",
     "tailwindcss": "^3.3.2"
   }
 }
