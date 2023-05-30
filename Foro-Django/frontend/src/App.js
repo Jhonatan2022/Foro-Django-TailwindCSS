@@ -10,7 +10,6 @@ import Header from "./components/Header";
 import Login from "./components/Login";
 
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -22,7 +21,6 @@ function App() {
     </BrowserRouter>
   );
 }
-
 
 // Exportamos por defecto el componente
 export default App;
