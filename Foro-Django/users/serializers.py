@@ -11,7 +11,7 @@ from .models import User
 
 
 
-#--------------------------------------SERIALIZERS--------------------------------------
+#--------------------------------------SERIALIZERS-------------------------------
 # Definimos el serializador de usuario
 class UserSerializer(serializers.ModelSerializer):
 
@@ -115,4 +115,4 @@ class UserSerializerWithToken(UserSerializer):
         # Devolvemos el token de usuario
         # Convertimos el token a string para poder devolverlo en el serializador
         return str(token.access_token)
-#--------------------------------------SERIALIZERS--------------------------------------
+#--------------------------------------SERIALIZERS------------------------------

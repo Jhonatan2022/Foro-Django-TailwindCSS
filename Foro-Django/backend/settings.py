@@ -44,6 +44,8 @@ ENVIROMENT = env
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -56,6 +58,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = []
+
 
 
 
@@ -82,6 +85,7 @@ INSTALLED_APPS = [
 
 
 
+
 # Incluimos las direcciones que podran acceder a nuestro aplicativo
 CORS_ALLOWED_ORIGINS = [
 
@@ -91,12 +95,12 @@ CORS_ALLOWED_ORIGINS = [
     # Incluimos la ip de react para el desarrollo
     'http://127.0.0.1:3000',
 ]
-#--------------------------------TAILWIND CONFIGURATION--------------------------------
+#-------------------------------TAILWIND CONFIGURATION--------------------------------
 
 
 
 
-#--------------------------------REST FRAMEWORK CONFIGURATION--------------------------------
+#-----------------------REST FRAMEWORK CONFIGURATION--------------------------------
 # Definimos el tipo de autenticacion que usaremos en nuestra api rest
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -198,6 +202,7 @@ SIMPLE_JWT = {
 
 
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -234,6 +239,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 
+
+
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -243,6 +250,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'foro-django.sqlite3',
     }
 }
+
+
 
 
 # Password validation
@@ -264,6 +273,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -274,6 +285,8 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+
 
 
 # Static files (CSS, JavaScript, Images)
@@ -302,4 +315,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Definimos el modelo de usuario que usaremos
 AUTH_USER_MODEL = 'users.User'
-
