@@ -1,50 +1,116 @@
-// Importamos todas las constantes de userConstants.js
 import {
-    USER_LOGIN_REQUEST,
-    USER_LOGIN_SUCCESS,
-    USER_LOGIN_FAIL,
+  USER_LOGIN_REQUEST,
+  USER_LOGIN_SUCCESS,
+  USER_LOGIN_FAIL,
+  USER_LOGOUT,
+  USER_REGISTER_REQUEST,
+  USER_REGISTER_SUCCESS,
+  USER_REGISTER_FAIL,
+  USER_EDIT_REQUEST,
+  USER_EDIT_SUCCESS,
+  USER_EDIT_FAIL,
+  USER_EDIT_RESET,
+  USER_SOLO_REQUEST,
+  USER_SOLO_SUCCESS,
+  USER_SOLO_FAIL,
+  USER_SOLO_RESET,
+  USER_LIST_REQUEST,
+  USER_LIST_SUCCESS,
+  USER_LIST_FAIL,
+  USER_LIST_RESET,
+} from "../constants/userConstants";
 
-    USER_LOGOUT,
+export const userEditReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_EDIT_REQUEST:
+      return { loading: true };
 
-    USER_REGISTER_REQUEST,
-    USER_REGISTER_SUCCESS,
-    USER_REGISTER_FAIL,
+    case USER_EDIT_SUCCESS:
+      return { loading: false, success: true, userInfo: action.payload };
 
-    USER_EDIT_REQUEST,
-    USER_EDIT_SUCCESS,
-    USER_EDIT_FAIL,
-    USER_EDIT_RESET,
+    case USER_EDIT_FAIL:
+      return { loading: false, error: action.payload };
 
-    USER_SOLO_REQUEST,
-    USER_SOLO_SUCCESS,
-    USER_SOLO_FAIL,
-    USER_SOLO_RESET,
+    case USER_EDIT_RESET:
+      return {};
 
-    USER_LIST_REQUEST,
-    USER_LIST_SUCCESS,
-    USER_LIST_FAIL,
-    USER_LIST_RESET,
-} from '../constants/userConstants';
+    default:
+      return state;
+  }
+};
 
+export const userListReducer = (state = { users: [] }, action) => {
+  switch (action.type) {
+    case USER_LIST_REQUEST:
+      return { loading: true };
 
+    case USER_LIST_SUCCESS:
+      return { loading: false, users: action.payload };
 
+    case USER_LIST_FAIL:
+      return { loading: false, error: action.payload };
 
-// Creamos el reducer para el login
+    case USER_LIST_RESET:
+      return { users: [] };
+
+    default:
+      return state;
+  }
+};
+
+export const userSoloReducer = (state = { user: {} }, action) => {
+  switch (action.type) {
+    case USER_SOLO_REQUEST:
+      return { ...state, loading: true };
+
+    case USER_SOLO_SUCCESS:
+      return { loading: false, user: action.payload };
+
+    case USER_SOLO_FAIL:
+      return { loading: false, error: action.payload };
+
+    case USER_SOLO_RESET:
+      return { user: {} };
+
+    default:
+      return state;
+  }
+};
+
+export const userRegisterReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_REGISTER_REQUEST:
+      return { loading: true };
+
+    case USER_REGISTER_SUCCESS:
+      return { loading: false, userInfo: action.payload };
+
+    case USER_REGISTER_FAIL:
+      return { loading: false, error: action.payload };
+
+    case USER_LOGOUT:
+      return {};
+
+    default:
+      return state;
+  }
+};
+
 export const userLoginReducer = (state = {}, action) => {
-    switch (action.type) {
-        case USER_LOGIN_REQUEST:
-            return { loading: true }
+  switch (action.type) {
+    case USER_LOGIN_REQUEST:
+      return { loading: true };
 
-        case USER_LOGIN_SUCCESS:
-            return { loading: false, userInfo: action.payload }
+    case USER_LOGIN_SUCCESS:
+      return { loading: false, userInfo: action.payload };
 
-        case USER_LOGIN_FAIL:
-            return { loading: false, error: action.payload }
+    case USER_LOGIN_FAIL:
+      return { loading: false, error: action.payload };
 
-        case USER_LOGOUT:
-            return {}
+    case USER_LOGOUT:
+      return {};
 
-        default:
-            return state
-    }
-}
+    default:
+      return state;
+  }
+};

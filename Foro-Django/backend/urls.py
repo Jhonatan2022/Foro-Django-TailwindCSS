@@ -39,3 +39,4 @@ urlpatterns = [
 #--------------------------------------URLS MEDIA--------------------------------
 # Indicamos la ruta de los archivos estáticos
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#--------------------------------------URLS MEDIA--------------------------------

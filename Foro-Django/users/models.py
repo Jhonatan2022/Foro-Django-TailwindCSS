@@ -138,3 +138,4 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     # Definimos el campo de REQUIRED_FIELDS que nos permite definir los campos que son obligatorios
     REQUIRED_FIELDS = ['user_name', 'first_name']
+#--------------------------------------MODELS--------------------------------------
