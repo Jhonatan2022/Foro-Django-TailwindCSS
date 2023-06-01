@@ -19,7 +19,6 @@ export default function Register() {
   const navigate = useNavigate();
   const path = "/";
 
-  
   useEffect(() => {
     if (userInfo) {
       navigate(path);
