@@ -1,33 +1,55 @@
-// Importamos createStore, combineReducers, applyMiddleware para la creación del store (almacén de datos)
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-// Importamos thunk para poder hacer peticiones asíncronas
-import thunk from 'redux-thunk';
+import {
+  userLoginReducer,
+  userRegisterReducer,
+  userSoloReducer,
+  userListReducer,
+  userEditReducer,
+} from "./reducers/userReducers";
 
-// Importamos composeWithDevTools para poder usar la extensión de Redux DevTools
-import { composeWithDevTools } from 'redux-devtools-extension';
+import {
+  blogListReducer,
+  blogCreateReducer,
+  blogDetailsReducer,
+  createCommentReducer,
+  blogDeleteReducer,
+  blogUpdateReducer,
+} from "./reducers/blogReducers";
 
-// Importamos los reducers que creamos
-import { userLoginReducer } from './reducers/userReducer';
-
-// Creamos el reducer para el login
 const reducer = combineReducers({
-    userLogin: userLoginReducer,
+  // User stuff
+  userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
+  userSolo: userSoloReducer,
+  userList: userListReducer,
+  userEdit: userEditReducer,
+
+  // Blog stuff
+  blogList: blogListReducer,
+  blogCreate: blogCreateReducer,
+  soloBlog: blogDetailsReducer,
+  commentBlog: createCommentReducer,
+  deleteBlog: blogDeleteReducer,
+  updateBlog: blogUpdateReducer,
 });
 
-// Obtenemos el usuario de la sesión
-const userInfoStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
+const userInfoStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
 
-// Creamos el estado inicial
 const initialState = {
-    userLogin: { userInfo: userInfoStorage },
+  userLogin: { userInfo: userInfoStorage },
 };
 
-// Creamos la constante de midelware para poder hacer peticiones asíncronas
 const middleware = [thunk];
 
-// Creamos la constante de store
-const store = createStore( reducer, initialState, composeWithDevTools( applyMiddleware(...middleware) ) );
+const store = createStore(
+  reducer,
+  initialState,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
 
-// Exportamos el store
 export default store;
