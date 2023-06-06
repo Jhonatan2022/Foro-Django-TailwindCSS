@@ -12,11 +12,13 @@ function classNames(...classes) {
 
 export default function Header() {
   const userLogin = useSelector((state) => state.userLogin);
+
   const { userInfo } = userLogin;
+
   const dispatch = useDispatch();
+
   const logoutHandler = () => dispatch(logout());
 
-  
   return (
     <Popover className="relative bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">

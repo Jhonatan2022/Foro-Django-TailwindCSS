@@ -9,18 +9,22 @@ import { useParams } from "react-router-dom";
 
 export default function MiPerfil() {
   const { id } = useParams();
+
   const dispatch = useDispatch();
+
   const blogList = useSelector((state) => state.blogList);
   const { error: errorBlog, loading: blogLoading, blogs } = blogList;
+
   const deleteBlog = useSelector((state) => state.deleteBlog);
   const {
     error: errorDelete,
     loading: loadingDelete,
     success: successDelete,
   } = deleteBlog;
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
 
+  const userLogin = useSelector((state) => state.userLogin);
+
+  const { userInfo } = userLogin;
 
   useEffect(() => {
     dispatch(listBlogs());
@@ -99,12 +103,12 @@ export default function MiPerfil() {
                     <div className="w-full">
                       <div
                         key={blog.id}
-                        class="flex justify-between items-center m-8"
+                        className="flex justify-between items-center m-8"
                       >
                         <div className="flex flex-row items-center">
                           <img
                             src={`http://127.0.0.1:8000${userInfo.image}`}
-                            class="rounded-full"
+                            className="rounded-full"
                             width="40"
                           />
                           <div className="flex flex-row items-center ml-2">
@@ -116,8 +120,8 @@ export default function MiPerfil() {
                       <div className="p-4 flex justify-between items-center">
                         <p>{blog.body}</p>
                       </div>
-                      <div class="p-4 flex justify-between items-center">
-                        <div class="flex flex-row items-center">
+                      <div className="p-4 flex justify-between items-center">
+                        <div className="flex flex-row items-center">
                           <a
                             href={`/editBlog/${blog.id}`}
                             className="group mx-6 relative flex  justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
