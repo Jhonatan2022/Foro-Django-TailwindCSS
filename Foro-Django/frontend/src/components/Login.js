@@ -10,13 +10,15 @@ import u from "../media/user.png";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const disptach = useDispatch();
+
   const userLogin = useSelector((state) => state.userLogin);
   const { error, loading, userInfo } = userLogin;
+
   const navigate = useNavigate();
   const path = "/";
 
-  
   useEffect(() => {
     if (userInfo) {
       navigate(path);

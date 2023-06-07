@@ -1,4 +1,3 @@
-// Creamos y exportamos por defecto el componente Landing
 export default function Landing() {
   return (
     <div className="relative overflow-hidden bg-white">
@@ -12,7 +11,8 @@ export default function Landing() {
               </span>
             </h1>
             <p className="mt-3 text-base text-gray-500 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
-              In this project we are gona be building a social media app with Django Rest Framework in the backend and React JS in the frontend
+              In this project we are gona be building a social media app with
+              Django Rest Framework in the backend and React JS in the frontend
             </p>
 
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
