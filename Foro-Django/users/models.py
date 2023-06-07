@@ -83,6 +83,7 @@ class CustomAccountManager(BaseUserManager):
 
 
 
+
 # Creamos una clase User que hereda de AbstractBaseUser y PermissionsMixin para poder crear un modelo de usuario personalizado
 class User(AbstractBaseUser, PermissionsMixin):
 
@@ -117,7 +118,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     # Definimos el campo de avatar que puede estar vacío
     # upload_to nos permite definir la ruta donde se guardará el archivo
     # max_length nos permite definir la longitud máxima del campo
-    image = models.ImageField(null=True, blank=True, default='/default.jpg')
+    image = models.ImageField(null=True, blank=True, default='/default.png')
 
 
     # Definimos el campo de is_staff que nos permite acceder al panel de administración

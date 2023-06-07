@@ -27,6 +27,7 @@ from users.models import User
 
 
 
+
 #--------------------------------------VIEWS--------------------------------------
 # Creamos la vista para obtener todos los blogs
 # Pasamos is_authenticated para que solo los usuarios autenticados puedan ver los blogs
@@ -71,6 +72,7 @@ def getSoloBlog(request, pk):
 
 
 
+
 # Creamos la vista para poder crear un blog nuevo
 # Pasamos is_authenticated para que solo los usuarios autenticados puedan ver los blogs
 @api_view(['POST'])
@@ -98,6 +100,7 @@ def postBlog(request):
 
     # Retornamos el serializer con el blog creado
     return Response(serializer.data)
+
 
 
 
@@ -167,6 +170,7 @@ def deleteBlog(request, pk):
 
         # Retornamos un error de no autorizado
         return Response({'Error': 'Unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
+
 
 
 

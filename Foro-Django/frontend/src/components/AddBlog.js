@@ -7,15 +7,11 @@ import Loader from "./Loader";
 
 export default function AddBlog() {
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
   const path = "/";
-
   const blogCreate = useSelector((state) => state.blogCreate);
   const { loading, error } = blogCreate;
-
   const [body, setBody] = useState("");
-
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createBlogAction(body));

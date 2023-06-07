@@ -13,12 +13,9 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
-
   const dispatch = useDispatch();
-
   const userRegister = useSelector((state) => state.userRegister);
   const { error, loading, userInfo } = userRegister;
-
   const navigate = useNavigate();
   const path = "/";
 

@@ -9,21 +9,16 @@ import { useParams } from "react-router-dom";
 
 export default function MiPerfil() {
   const { id } = useParams();
-
   const dispatch = useDispatch();
-
   const blogList = useSelector((state) => state.blogList);
   const { error: errorBlog, loading: blogLoading, blogs } = blogList;
-
   const deleteBlog = useSelector((state) => state.deleteBlog);
   const {
     error: errorDelete,
     loading: loadingDelete,
     success: successDelete,
   } = deleteBlog;
-
   const userLogin = useSelector((state) => state.userLogin);
-
   const { userInfo } = userLogin;
 
   useEffect(() => {
@@ -88,11 +83,9 @@ export default function MiPerfil() {
           </dl>
         </div>
       </div>
-
       <h2 className="mt-6 mb-6 text-center text-3xl font-bold tracking-tight text-gray-900">
         -- POSTS --
       </h2>
-
       {blogs.map((blog) => (
         <>
           {userInfo.user_name === blog.user && (

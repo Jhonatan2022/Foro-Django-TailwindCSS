@@ -8,6 +8,7 @@ from .models import Blog, Comment
 
 
 
+
 #--------------------------------------SERIALIZERS--------------------------------------
 # Definimos el serializador de Comment 
 class CommentSerializer(serializers.ModelSerializer):

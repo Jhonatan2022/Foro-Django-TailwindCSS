@@ -100,6 +100,7 @@ CORS_ALLOWED_ORIGINS = [
 
 
 
+
 #-----------------------REST FRAMEWORK CONFIGURATION--------------------------------
 # Definimos el tipo de autenticacion que usaremos en nuestra api rest
 REST_FRAMEWORK = {
@@ -110,6 +111,8 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+
+
 
 
 # Definimos el tiempo de expiracion del token
@@ -198,11 +201,13 @@ SIMPLE_JWT = {
     # SLIDING TOKEN REFRESH LIFETIME es para definir el tiempo de expiracion del token de refresco (En segundos)
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+#-----------------------REST FRAMEWORK CONFIGURATION--------------------------------
 
 
 
 
 
+#-----------------------DJANGO CONFIGURATION--------------------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -218,7 +223,11 @@ MIDDLEWARE = [
     # Incluimos el middleware de django_browser_reload para poder recargar el navegador cuando se hacen cambios en el codigo
 ]
 
+
+
 ROOT_URLCONF = 'backend.urls'
+
+
 
 TEMPLATES = [
     {
@@ -237,6 +246,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'
+
 
 
 
@@ -310,6 +320,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 
 
 
