@@ -11,6 +11,7 @@ from .models import User
 
 
 
+
 #--------------------------------------SERIALIZERS-------------------------------
 # Definimos el serializador de usuario
 class UserSerializer(serializers.ModelSerializer):

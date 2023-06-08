@@ -8,6 +8,7 @@ from users.models import User
 
 
 
+
 #--------------------------------------MODELS------------------------------
 # Creamos la clase de blog que hereda de models.Model
 class Blog(models.Model):

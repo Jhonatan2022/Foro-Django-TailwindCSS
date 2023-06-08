@@ -10,17 +10,12 @@ import { BLOG_CREATE_COMMENT_RESET } from "../constants/blogConstants";
 
 export default function SoloBlog() {
   const { id } = useParams();
-
   const dispatch = useDispatch();
-
   const [text, setText] = useState("");
-
   const commentBlog = useSelector((state) => state.commentBlog);
   const { success } = commentBlog;
-
   const soloBlog = useSelector((state) => state.soloBlog);
   const { loading, error, blog } = soloBlog;
-
   const userList = useSelector((state) => state.userList);
   const { users } = userList;
 

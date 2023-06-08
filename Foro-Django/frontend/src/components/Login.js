@@ -10,12 +10,9 @@ import u from "../media/user.png";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const disptach = useDispatch();
-
   const userLogin = useSelector((state) => state.userLogin);
   const { error, loading, userInfo } = userLogin;
-
   const navigate = useNavigate();
   const path = "/";
 
@@ -85,7 +82,6 @@ export default function Login() {
                   />
                 </div>
               </div>
-
               <div className="flex items-center justify-between">
                 <div className="text-sm">
                   <a
@@ -96,7 +92,6 @@ export default function Login() {
                   </a>
                 </div>
               </div>
-
               <div>
                 <button
                   type="submit"

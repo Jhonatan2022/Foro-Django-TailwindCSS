@@ -17,18 +17,13 @@ export default function EditProfile() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [uploading, setUploading] = useState(false);
-
   const navigate = useNavigate();
   const path = "/miPerfil";
-
   const dispatch = useDispatch();
-
   const userSolo = useSelector((state) => state.userSolo);
   const { error, loading, user } = userSolo;
-
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-
   const userEdit = useSelector((state) => state.userEdit);
   const { success } = userEdit;
 
@@ -80,13 +75,11 @@ export default function EditProfile() {
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
-
       const { data } = await axios.post(
         "http://127.0.0.1:8000/users/image/",
         formData,
         config
       );
-
       setImage(data);
       setUploading(false);
     } catch (error) {

@@ -9,17 +9,12 @@ import { BLOG_UPDATE_RESET } from "../constants/blogConstants";
 
 export default function EditBlog() {
   const { id } = useParams();
-
   const navigate = useNavigate();
   const path = "/miPerfil";
-
   const dispatch = useDispatch();
-
   const [body, setBody] = useState("");
-
   const soloBlog = useSelector((state) => state.soloBlog);
   const { error: errorSolo, loading: loadingSolo, blog } = soloBlog;
-
   const updateBlog = useSelector((state) => state.updateBlog);
   const { error, loading, success } = updateBlog;
 

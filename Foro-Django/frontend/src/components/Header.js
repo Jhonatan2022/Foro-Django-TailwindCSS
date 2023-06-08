@@ -12,11 +12,8 @@ function classNames(...classes) {
 
 export default function Header() {
   const userLogin = useSelector((state) => state.userLogin);
-
   const { userInfo } = userLogin;
-
   const dispatch = useDispatch();
-
   const logoutHandler = () => dispatch(logout());
 
   return (
@@ -234,7 +231,6 @@ export default function Header() {
                   >
                     Sign up
                   </a>
-
                   <p className="mt-6 text-center text-base font-medium text-gray-500">
                     Existing customer?{" "}
                     <a

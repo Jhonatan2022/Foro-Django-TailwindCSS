@@ -15,6 +15,7 @@ from django.conf.urls.static import static
 
 
 
+
 #--------------------------------------URLS--------------------------------------
 # Definimos las rutas
 urlpatterns = [
@@ -32,6 +33,7 @@ urlpatterns = [
     path('blogs/', include('blogs.urls')),
 ]
 #--------------------------------------URLS--------------------------------------
+
 
 
 
