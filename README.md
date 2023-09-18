@@ -1,9 +1,9 @@
 # Forum With Django And React <a href="mailto:florezj328@gmail.com"> <img src="https://img.shields.io/badge/Gmail-red?style=for-the-badge&logo=gmail&logoColor=white" width="80px" alt="Jhonattan Florez"/> </a>
 
 ## Requisitos previos
-* [Python Instalado](https://www.python.org/downloads/)
-* [Pip Instalado](https://pip.pypa.io/en/stable/installing/)
-* [Node Instalado](https://nodejs.org/es/download/)
+* [Python](https://www.python.org/downloads/)
+* [Node](https://nodejs.org/es/download/)
+* [DB Browser for SQLite](https://sqlitebrowser.org/dl/)
 
 ---
 ## Pasos a seguir
@@ -59,6 +59,4 @@ python manage.py runserver
 cd .\frontend\
 npm start
 ```
-
-![](img/Forum%20Start.png)
 ![](img/Forum%20Posts.png)
